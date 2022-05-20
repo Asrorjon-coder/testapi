@@ -1,0 +1,27 @@
+mutation ($fname: String, $lname: String, $email: String, $phone: String, $region: String) {
+  adduser(firstname: $fname, lastname: $lname, email: $email, phone: $phone, region: $region) {
+    firstname
+    lastname
+    email
+    phone
+    region
+  }
+}
+
+query ($fname: String) {
+  user(firstname: $fname) {
+    firstname
+    lastname
+    email
+    phone
+    region
+  }
+}
+
+{
+  "fname": "Asrorjon",
+  "lname": "Muxtorov",
+  "email": "abc",
+  "phone": "123",
+  "region": "Bukhara"
+}
