@@ -6,12 +6,13 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     graphiql: true,
 }));
+app.use('/files', require('./route/files.js'));
 
 const dbConn = mongoose.connection;
 dbConn.on('error', err => console.log(`Connection error: ${err}`));
